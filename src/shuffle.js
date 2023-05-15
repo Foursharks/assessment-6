@@ -28,8 +28,11 @@ module.exports = (array) => {
     result[rand] = result[index];
     result[index] = value;
   }
+  //result is an array that has been shuffled - can see it in the network tab
   return result;
+  
 };
+
 
 // The MIT License
 //
