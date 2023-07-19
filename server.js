@@ -1,13 +1,13 @@
 const express = require("express");
-const bots = require("./src/botsData");
-const shuffle = require("./src/shuffle");
+
 const app = express();
 const cors = require("cors");
 
-app.use(express.json());
+app.use(express.static('public'));
 app.use(cors());
 
-
+const bots = require("./src/botsData");
+const shuffle = require("./src/shuffle");
 
 const playerRecord = {
   wins: 0,
@@ -53,7 +53,9 @@ app.get("/api/robots/shuffled", (req, res) => {
     let shuffled = shuffle(bots);
     //return shuffled,  which is the 10 bots with the shuffle function applied to them
     res.status(200).send(shuffled);
+    console.log(shuffled)
   } catch (error) {
+    
     console.error("ERROR GETTING SHUFFLED BOTS", error);
     res.sendStatus(400);
   }
